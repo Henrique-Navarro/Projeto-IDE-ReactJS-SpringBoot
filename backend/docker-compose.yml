@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  java-compiler:
+    image: openjdk:11
+    container_name: jdk
+    volumes:
+      - ./:/app
+
+  db:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_TCP_PORT: 3307
+    ports:
+      - "3307:3307"
+    volumes:
+      - ide_data:/var/lib/mysql
+  
+volumes:
+  ide_data:
