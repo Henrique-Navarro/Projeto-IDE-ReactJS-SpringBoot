@@ -6,6 +6,12 @@ services:
     volumes:
       - ./:/app
 
+  python-compiler:
+    image: python:3
+    container_name: python
+    volumes:
+      - ./:/app
+
   db:
     image: mysql
     container_name: mysql
