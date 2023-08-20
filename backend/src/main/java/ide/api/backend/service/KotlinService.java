@@ -1,18 +1,14 @@
 package ide.api.backend.service;
 
 import ide.api.backend.service.base.BaseLanguageService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.File;
 
 @Service
-public class JavaService extends BaseLanguageService {
-
-    public JavaService() {
-        super("java");
+public class KotlinService extends BaseLanguageService {
+    public KotlinService() {
+        super("kt");
     }
 
     @Override
@@ -20,8 +16,8 @@ public class JavaService extends BaseLanguageService {
         return new ProcessBuilder(
                 "docker", "run", "--rm",
                 "-v", tempDir.getAbsolutePath() + ":/app",
-                "openjdk:11",
-                "javac", "/app/Main.java");
+                "kotlin:latest",
+                "kotlinc", "/app/main.kt", "-include-runtime", "-d", "/app/main.jar");
     }
 
     @Override
@@ -30,6 +26,7 @@ public class JavaService extends BaseLanguageService {
                 "docker", "run", "--rm",
                 "-v", tempDir.getAbsolutePath() + ":/app",
                 "openjdk:11",
-                "java", "-classpath", "/app", "Main");
+                "java", "-jar", "/app/main.jar");
     }
+
 }

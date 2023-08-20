@@ -8,7 +8,6 @@ import java.io.*;
 import java.nio.file.Files;
 
 @Service
-@Log4j2
 public class PythonService extends BaseLanguageService {
 
     public PythonService() {

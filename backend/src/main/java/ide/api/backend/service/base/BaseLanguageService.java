@@ -12,7 +12,6 @@ public abstract class BaseLanguageService implements LanguageService {
 
     private final String fileExtension;
 
-
     @Override
     public String compileAndRun(String code) throws IOException, InterruptedException {
         File tempDir = createTempFilesWithCode(code);
@@ -24,7 +23,9 @@ public abstract class BaseLanguageService implements LanguageService {
     }
 
     private boolean shouldCompile(String fileExtension) {
-        List<String> compiledLanguages = Arrays.asList("java", "c");
+        //EXTENSÕES DAS LINGUAGENS COMPILADAS
+        List<String> compiledLanguages = Arrays.asList(
+                "java", "c", "cpp", "cs");
         return compiledLanguages.contains(fileExtension);
     }
 
@@ -44,7 +45,8 @@ public abstract class BaseLanguageService implements LanguageService {
         Process process = processBuilder.start();
 
         StringBuilder compileErrors = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(process.getInputStream()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 compileErrors.append(line).append("\n");
@@ -60,7 +62,8 @@ public abstract class BaseLanguageService implements LanguageService {
         Process runProcess = runProcessBuilder.start();
 
         StringBuilder output = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(runProcess.getInputStream()))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(runProcess.getInputStream()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 output.append(line).append("\n");
@@ -68,7 +71,6 @@ public abstract class BaseLanguageService implements LanguageService {
         }
         runProcess.waitFor();
         return output.toString();
-
     }
 
     protected abstract ProcessBuilder createCompilerProcessBuilder(File tempDir);

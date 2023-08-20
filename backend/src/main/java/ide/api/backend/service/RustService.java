@@ -1,18 +1,14 @@
 package ide.api.backend.service;
 
 import ide.api.backend.service.base.BaseLanguageService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.File;
 
 @Service
-public class JavaService extends BaseLanguageService {
-
-    public JavaService() {
-        super("java");
+public class RustService extends BaseLanguageService {
+    public RustService() {
+        super("rs");
     }
 
     @Override
@@ -20,8 +16,8 @@ public class JavaService extends BaseLanguageService {
         return new ProcessBuilder(
                 "docker", "run", "--rm",
                 "-v", tempDir.getAbsolutePath() + ":/app",
-                "openjdk:11",
-                "javac", "/app/Main.java");
+                "rust:latest",
+                "rustc", "/app/main.rs");
     }
 
     @Override
@@ -29,7 +25,7 @@ public class JavaService extends BaseLanguageService {
         return new ProcessBuilder(
                 "docker", "run", "--rm",
                 "-v", tempDir.getAbsolutePath() + ":/app",
-                "openjdk:11",
-                "java", "-classpath", "/app", "Main");
+                "rust:latest",
+                "/app/main");
     }
 }

@@ -12,6 +12,12 @@ services:
     volumes:
       - ./:/app
 
+  c-compiler:
+    image: gcc:latest
+    container_name: gcc
+    volumes:
+      - ./:/app
+  
   db:
     image: mysql
     container_name: mysql
@@ -22,6 +28,6 @@ services:
       - "3307:3307"
     volumes:
       - ide_data:/var/lib/mysql
-  
+
 volumes:
   ide_data:
