@@ -1,19 +1,43 @@
-.container {
+.container_left,
+.container_right {
     display: inline-block;
+    width: 50vw;
+    height: 100vh;
 }
 
-.input {
+.header_container {
+    text-align: center;
+    /*padding: 1%;*/
+    background-color: #2E2F34;
+    color: white;
+}
+
+.align_right {
     display: inline-block;
+    width: 70%;
+    text-align: right;
+}
+
+.align_left {
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    text-align: left;
+    background-color: #1B212F;
 }
 
 textarea {
-    padding: initial;
-    background-color: initial;
+    padding: 0;
     resize: none;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    color: inherit;
+    background-color: #1B212F;
+    border: none;
+    overflow: auto;
+    color: white;
+    height: 100vh;
+    width: 100%;
 }
 
 textarea:focus {
@@ -24,7 +48,7 @@ textarea:focus {
     padding: 10px 30px;
     border: 1px solid black;
     background-color: initial;
-    color: initial;
+    color: white;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -34,4 +58,16 @@ textarea:focus {
 .button:hover {
     color: white;
     background-color: crimson;
+}
+
+.code_area {
+    height: 35.23em;
+}
+
+.input_area {
+    height: 17.5em;
+}
+
+.output_area {
+    height: 17.5em;
 }

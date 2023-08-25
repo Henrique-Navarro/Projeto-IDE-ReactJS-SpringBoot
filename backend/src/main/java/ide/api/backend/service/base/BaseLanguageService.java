@@ -17,7 +17,7 @@ public abstract class BaseLanguageService implements LanguageService {
         File tempDir = createTempFilesWithCode(code);
 
         String compileErrors = shouldCompile(fileExtension) ? compile(tempDir) : null;
-        String runOutput = compileErrors == null ? run(tempDir) : null;
+        String runOutput = compileErrors == null ? run(tempDir) : "Erro!";
 
         return compileErrors != null ? compileErrors : runOutput;
     }

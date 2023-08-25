@@ -1,0 +1,6 @@
+.flex_container {
+    display: flex;
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+}

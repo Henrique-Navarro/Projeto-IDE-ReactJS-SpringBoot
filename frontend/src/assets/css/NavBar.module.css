@@ -2,21 +2,29 @@
     display: inline-block;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 1%;
     width: 5%;
-    background-color: #f7f7f7;
+    background-color: #383B40;
     text-align: center;
+    border-right: 1px solid #ccc;
 }
 
 .navbar li {
     display: block;
-    padding: 8px 16px;
-    border-bottom: 1px solid #ccc;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    margin-bottom: 10%;
+    background-color: #383B40;
+    line-height: 0;
+}
+
+.icon {
+    font-size: 1.5em;
 }
 
 .link {
     text-decoration: none;
-    color: #333333;
+    color: white;
 }
 
 .navbar li:hover {

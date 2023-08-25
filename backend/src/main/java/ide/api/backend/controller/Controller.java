@@ -2,6 +2,9 @@ package ide.api.backend.controller;
 
 import ide.api.backend.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -47,8 +50,8 @@ public class Controller {
     }
 
     @PostMapping(path = "java")
-    public String compilarJava(@RequestBody String code) throws IOException, InterruptedException {
-        return javaService.compileAndRun(code);
+    public ResponseEntity<String> compilarJava(@RequestBody String code) throws IOException, InterruptedException {
+        return ResponseEntity.status(HttpStatus.OK).body(javaService.compileAndRun(code));
     }
 
     @PostMapping(path = "kotlin")

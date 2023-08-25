@@ -1,0 +1,23 @@
+.container {
+    padding: 1.3% 1%;
+    background-color: #1F2024;
+    color: white;
+}
+
+.login_container,
+.logo_container {
+    height: 100%;
+    display: block;
+}
+
+.logo_container {
+    width: 20%;
+    display: inline-block;
+}
+
+.login_container {
+    width: 10%;
+    display: block;
+    float: right;
+    text-align: center;
+}
